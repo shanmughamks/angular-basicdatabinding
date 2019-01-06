@@ -1,0 +1,27 @@
+<label for="txtUserName">User Name:</label>
+<input type="text" id="txtUserName" class="form-control" 
+    [(ngModel)] ="userName"
+    (input) = "changeButtonStatus($event)" >
+<p>{{ userName }}</p>
+
+<button class="btn btn-primary" 
+    [disabled]="!allowReset" 
+    (click) ="clearUserName()">Reset UserName
+</button>
+
+<hr>
+<div>
+    <label>Month:</label>
+    <select (change) = "changeMonth($event)">
+        <option *ngFor = "let i of month">{{i}}</option>
+    </select>
+</div>
+<div>
+    <span *ngIf = "isAvilable">Using ngIf, conditionally this is displayed !!</span>
+</div>
+
+<div>
+    <span *ngIf = "isAvilable; then condition1 else condition2"></span>
+    <ng-template #condition1>Condition-1, valid !!</ng-template>
+    <ng-template #condition2>Condition-2, invalid !!</ng-template>
+</div>
